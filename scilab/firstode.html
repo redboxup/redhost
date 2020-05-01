@@ -1,0 +1,97 @@
+<html>
+<head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<title>Solving First Order ODE</title>
+<style>
+p.solid{border-style: double;}
+</style>
+</head>
+<body>
+<h1>Solving First Order ODE</h1>
+</br>
+<h3> Radioactivity Decay</h3>
+<p>Radioactive Decay is a phenomenon wherein heavy unstable atoms decomposes into smaller more stable atoms by releasing excess energy as gamma radiation. Radioactive decay is an inherntly random process and it can not be predicted exactly which atom will decay at an instantaneous moment</p>
+<p>We can represent this rate of change as a differential equation</p>
+$$ \frac{dN}{dt} = -kN$$
+Questions related to numerical analysis should always be solved analytically first for better understanding. Thus,
+<br><h3>Analytic Solution</h3>
+<p>According to Radioactive law of decay:
+$$ \frac{dN}{dt} \propto N$$
+Replacing the proportionality constant with '-k'
+$$ \frac{dN}{dt} = -kN$$
+$$ \frac{dN}{N} = -kdt$$
+$$ \int_{N_0}^{N} \frac{dN}{N} = -\int_{0}^{T}kdt$$
+$$ \int_{N_0}^{N} \frac{dN}{N} +k\int_{0}^{T}dt = 0$$
+$$ \log_{e}(\frac{N}{N0}) +kT = 0$$
+Taking natural logarithm on both sides
+$$ N = N_0e^{-kT}$$
+<p>Thus we  can see that solution of the differential equation is an exponential function which is raised to the power of -kT. Evaluating such functions before hand allows us to check if the program is working properly. Then we can apply the program to find the numerical solution of some differential equation to find out the nature of solution. </p>
+<h3>Scilab Program</h3>
+<p>Now, we'll use scilab to solve odinary differential equations.We will use the inbuilt ode() function which solves explicit odinary differential equations, defined by 
+$$ \frac{dy}{dt} = f(y,t)$$
+such that 
+$$y(t_0) = y_0$$
+Though the knowledge of the numerical methods being used is not required for further information you can always do further reading from scilab's official
+<a href="https://help.scilab.org/docs/6.0.0/en_US/ode.html">website</a>.</p>
+<p>The following is the program for calculating the solution of differential equation of radioactive decay of Uranium atoms</p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+				k = 4.96*10^(-18);
+				N0 = 1000; 
+				T0 = 0;
+				T = linspace(0,10^18,100);
+				function dN = f(T,N)
+				    dN = -k*N
+				endfunction
+				n = ode(1000,0,T,f); 
+				plot(T,n)
+				xlabel("time(sec)")
+				ylabel("Number of Atoms")
+				title("Solution of Radioactive Decay of Uranium atoms")
+</span>
+</pre>
+For understanding better the whole program can be sub-divided.
+</br>
+<p>The first step is initialising variables. Here 'k' stands for the radioactivity decay constant,'N0' is the initial number of atoms, 'T0' is the time from which values are being recorded.<br>
+Here, linspace is a speacial function that is used to create an array of values from value given in the first parameter to the value in second parameter. The number of values in between will be equal to the value given in as the last parameter</p>
+
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+				k = 4.96*10^(-18);
+				N0 = 1000; 
+				T0 = 0;
+				T = linspace(0,10^18,100);
+</span>
+</pre>
+</br>
+<p>The most important part of the program is the function:
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+				function dN = f(T,N)
+				    dN = -k*N
+				endfunction
+				
+</span>
+</pre>
+We are basically expressing the differntial equation in the syntax of scilab function.</p>
+</br>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+				n = ode(1000,0,T,f); 
+
+				plot(T,n)
+				xlabel("time(sec)")
+				ylabel("Number of Atoms")
+				title("Solution of Radioactive Decay of Uranium atoms")
+</span>
+</pre>
+<p> The first line of the program calls the ode function which solves the given function for the differential equation. The rest of the program plots the values and draws the required legends,etc
+<br>
+<br>
+</br>
+<em>created by @redboxup 2020<em>
+</body>
+</html>
