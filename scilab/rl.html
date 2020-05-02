@@ -1,0 +1,110 @@
+<html>
+<head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<title>SolvingODE:RL-Circuit</title>
+</head>
+<body>
+<table cellpadding = 10> 
+<tr> 
+<td width = 50> </td>
+<td> 
+<h1>Solving First Order ODE</h1>
+</br>
+<h3> Series RL - Circuit</h3>
+<p>An inductor resists change in current, and eventhough we have a constant voltage source 'V', as soon as we connect the elements of the circuit the current will take some finite time to change. It is during this time interval that voltage accross the inductor opposes the current flow.</p>
+<center>
+<img src="./RL.png" alt="series RL circuit">
+</center>
+<p>Consider for the given above image the voltage is constant</p>
+<p>Applying Kirchoff Voltage Law</p>
+$$V_{DC} = iR + L\frac{di}{dt}$$
+Rewriting the above using substitutions
+$$ \frac{di}{dt} = \frac{V_{DC} -iR}{L}$$
+<p>Thus, we now have the differential equation that describes the variation of current 'i' in the series RL-circuit.</p>
+For the sake of better understanding we will also solve the given equation analytically.
+<h4>Analytic Solution</h4>
+From the above differential equation, we can write:
+$$\frac{di}{V_{DC} - iR}= \frac{1}{L} dt$$
+Integrating on both sides
+$$\int_{i_0}^{i} \frac{di}{V_{DC} - iR}= \frac{1}{L} \int_{0}^{t} dt$$
+$$ -\frac{1}{R} log_e{\frac{V_{DC} - iR}{V_{DC}}}= -\frac{R}{L} t$$
+Taking Natural logarithm on both sides
+$$ \frac{V_{DC} - iR}{V_{DC}} = e^{-\frac{R}{L}t} $$
+$$ V_{DC} - iR= V_{DC}e^{-\frac{R}{L}t}$$
+$$ V_{DC}(1-e^{-\frac{R}{L}t}) = iR$$ 
+$$ i=\frac{V_{DC}}{R}(1-e^{-\frac{R}{L}t}) $$
+<p>Thus, we have the solution of the differential equation of the 'i'. The solution describes exactly how the current 'i' changes with respect to time.</p>
+<h4>Scilab Program</h4>
+<p>The entire program that can solve the given differential equation is </p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			V0=5
+			i0=0
+			R = 50
+			T0 = 0
+			L = 1
+			T = linspace(0,0.2,100);
+			function di = f(T,i)
+			    di = (V0-i*R)/L
+			endfunction
+			n = ode(i0,T0,T,f); 
+			plot(T,n)
+			xlabel("time(sec)")
+			ylabel("Current(mA)")
+			title("Solution of Series RC circuit")
+
+</span>
+</pre>
+<p>The program can further be understood by segmenting it.The first step is initialsing the variables. Here the variables represent:</p>
+V0 is the Value of DC EMF</br>
+i0 is the value of current when measurement begun</br>
+R is the resistance </br>
+L is the value of inductance</br>
+T is the array of elements representing moments of time</br>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			V0=5
+			i0=0
+			R = 50
+			T0 = 0
+			L = 1
+			T = linspace(0,0.2,100);
+			
+</span>
+</pre>
+<p>The second part is the representation of mathematical function</p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			function di = f(T,i)
+			    di = (V0-i*R)/L
+			endfunction
+			
+</span>
+</pre>
+<p>The ode() is the inbuilt function that performs the numerical method to solve the ode. The rest of the program is used to plot the function and draw the legends for the graph.
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			n = ode(i0,T0,T,f); 
+			plot(T,n)
+			xlabel("time(sec)")
+			ylabel("Current(mA)")
+			title("Solution of Series RC circuit")
+
+</span>
+</pre>
+The Output:
+<center>
+<img src="./Rl.png" alt="plot">
+
+<br>
+<br>
+</br>
+<center>
+<em>created by @redboxup 2020<em>
+</center>
+</table>
+</body>
+</html>

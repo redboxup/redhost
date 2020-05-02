@@ -1,0 +1,115 @@
+<html>
+<head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<title>SolvingODE:RC-Circuit</title>
+</head>
+<body>
+<table cellpadding = 10> 
+<tr> 
+<td width = 50> </td>
+<td> 
+<h1>Solving First Order ODE</h1>
+</br>
+<h3> Series RC - Circuit</h3>
+<p>Series RC circuit has varying current under a DC source. A capacitor ideally gets charged and discharged in 0 seconds. But when it is used in series with a resistor it takes some time to charge or discharge. We can express current in the circuit using a differential equation.</p>
+<center>
+<img src="./RCimage.png" alt="output" height = "150">
+</center>
+<p>Using KVL in the circuit
+$$ V_{DC} = iR + \frac{Q}{C}$$
+$$Replacing: Q = \int idt$$
+$$ V_{DC} = iR + \frac{1}{C} \int idt $$
+Differentiating on both sides
+$$ 0 = R\frac{di}{dt} + \frac{1}{C} idt $$
+$$ \frac{di}{dt} = -\frac{i}{RC}$$
+Thus we have obtained the Differential equation that describes the current in the circuit. We can solve this differential equation to find the value of 'i' at any moment 't'.</p>
+The analytic solution of the given differential equation is covered in the next part:
+<br><h3>Analytic Solution</h3>
+<p>Integrating on both sides
+$$ \int_{i_0}^{i}\frac{di}{dt}= -\int_{0}^{t} \frac{i}{RC}  $$
+$$ \log_{e}(\frac{i}{i0}) +\frac{T}{RC} = 0$$
+Taking natural logarithm on both sides
+$$ i = i_0e^{-\frac{1}{RC}T}$$
+<p>Thus we  can see that solution of the differential equation is also an exponential function which is raised to the power of -T/RC. Thus the nature of the solution will be similar to the previous program </p>
+<h3>Scilab Program</h3>
+<p>Now, we'll use scilab to solve odinary differential equations.We will use the inbuilt ode() function which solves explicit odinary differential equations, defined by 
+$$ \frac{dy}{dt} = f(y,t)$$
+such that 
+$$y(t_0) = y_0$$
+Though the knowledge of the numerical methods being used is not required for further information you can always do further reading from scilab's official
+<a href="https://help.scilab.org/docs/6.0.0/en_US/ode.html">website</a>.</p>
+<p>The following is the program for calculating the variation of current in the series RC-circuit</p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			i0=20
+			R = 5
+			T0 = 0
+			C = 0.02
+			T = linspace(0,1,100);
+			function di = f(T,i)
+			    di = -1/(R*C)*i
+			endfunction
+			n = ode(i0,T0,T,f); 
+			plot(T,n)
+			xlabel("time(sec)")
+			ylabel("Current(mA)")
+			title("Solution of Series RC circuit")
+				
+</span>
+</pre>
+Similar to the previous program I'll be segmenting the program and explaining each segments function in brief.
+</br>
+<p>The first step is initialising variables. These variables are used to represent the various element of the ode.<br>
+R is the Resistance in ohms</br>
+T0 is the instantaneos second from which time is noted</br>
+C is the Capacitence of the circuit </br>
+and T is the array of elements of time at each moment</br>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+i0=20
+			R = 5
+			T0 = 0
+			C = 0.02
+			T = linspace(0,1,100);
+
+</span>
+</pre>
+</br>
+<p>The function of the program is the function which is equal to di\dt:</p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			function di = f(T,i)
+			    di = -1/(R*C)*i
+			endfunction
+							
+</span>
+</pre>
+</br>
+<p> The inbuilt ode function performs the numerical analysis and stores the result of current at each moment in 'n'.Thus, n is also an array whose size is equal to the size of T.
+</p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			n = ode(i0,T0,T,f); 
+			
+			plot(T,n)
+			xlabel("time(sec)")
+			ylabel("Current(mA)")
+			title("Solution of Series RC circuit")
+			
+</span>
+</pre>
+The Output of the graph:</br>
+<center>
+<img src="./RC.png" alt="output">
+
+<br>
+<br>
+</br>
+<em>created by @redboxup 2020<em>
+</center>
+</table>
+</body>
+</html>

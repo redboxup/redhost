@@ -1,0 +1,66 @@
+<html>
+<head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<title>SolvingODE:NewtonCooling</title>
+</head>
+<body>
+<table cellpadding = 10> 
+<tr> 
+<td width = 50> </td>
+<td> 
+<h1>Solving First Order ODE</h1>
+<br>
+<h3>Newton's Law of Cooling</h3>
+<p>Newton's Law of Cooling states that the rate of change of the temperature of an object is proportional to the difference between its own temperature and the ambient temperature (i.e. the temperature of its surroundings).</p>
+The differential equation equation will be:
+$$ \frac{dT}{dt}=-k(T-T_a)$$
+Where;</br>
+T is the Temperature of a point at any given instant</br>
+t is the time </br>
+k is the Coefficient of proportionality</br>
+The Analytic solution of the differential equation is as follows:
+<h4>Analytic Solution</h4>
+Rewriting the differential equation as follows:
+$$ \frac{dT}{T-T_a} = -kdt$$
+Integrating on both sides
+$$ \int \frac{dT}{T-T_a} = -k\int dt$$
+$$ \log_{e}{T-T_a} = -kT + C$$
+Taking Natural logarithm on both sides
+$$ T- T_a = Ce^{-kt}$$
+$$ T = T_a + Ce^{-kt}$$
+Thus, we have obtained solution of the differential equation, which tells us the value of T as every instant T.
+<h4>Scilab Program</h4>
+<p>The total program has been given below and segmented explantion is not provided because it is very similar to the previous programs.</p>
+<pre>
+<span class="inner-pre" style="font-size: 15px">
+			T_a = 5
+			T0= 100
+			k = 0.054
+			t0 = 0
+			t = linspace(0,100,100);
+			function dT = f(t,T)
+			    dT = -k*(T-T_a)
+			endfunction
+			T = ode(T0,t0,t,f); 
+			plot(t,T)
+			xlabel("time(min)")
+			ylabel("Temperture(degrees)")
+			title("Solution of Newton Law of Cooling Effect")
+</span>
+</pre>
+The Output:
+<center>
+<img src="./NewtonCooling.png" alt="plot">
+</center>
+<br>
+<br>
+</br>
+<center>
+<em>created by @redboxup 2020<em>
+</center>
+</table>
+</body>
+</html>

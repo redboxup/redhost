@@ -1,128 +1,505 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>MathJax TeX Test Page</title>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
-</script>
-</head>
-<body>
-When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-$$ f = \frac{xy}{dh} $$
-</body>
-</html>
-<center>
-<!dy\dx values----------------------------------------------------------> 
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow>
-	<mfrac>
-	<mrow>
-		<mn>dN</mn>
-	</mrow>
-	<mrow>
-		<mn>dt</mn>
-	</mrow>
-	</mfrac>
-</mrow>
-<mrow><mo>&#x0003D;</mo></mrow>
-<mrow><mo>&#x02212;</mo>
-	<mi>k</mi>
-	<mo>&#x0002A;</mo>
-	<mi>N</mi>
-</mrow>
-</math>
-</br>
-</center>
-<!end--------------------------------------------------------------------->
-</br>
-<p>Questions related to Numerical Analysis should always be solved analytically before methods are applied. Below is the numerical solution</p>
-<h3>Analytic solution</h3>
-According to Radioactive law of decay:</br>
-<center>
-<math display="inline" xlmns="http://www.w3.org/1998/Math/MathML">
-<mrow>
-	<mfrac>
-	<mrow>
-		<mn>dN</mn>
-	</mrow>
-	<mrow>
-		<mn>dt</mn>
-	</mrow>
-	</mfrac>
-</mrow>
-<mrow><mo>&#x0221D;</mo><mi>N</mi></mrow>
-</math>
-</center>
-Replacing the proportionality constant with '-k' 
-<center>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow>
-	<mfrac>
-	<mrow>
-		<mn>dN</mn>
-	</mrow>
-	<mrow>
-		<mn>dt</mn>
-	</mrow>
-	</mfrac>
-</mrow>
-<mrow><mo>&#x0003D;</mo></mrow>
-<mrow><mo>&#x02212;</mo>
-	<mi>k</mi>
-	<mo>&#x0002A;</mo>
-	<mi>N</mi>
-</mrow>
-</br>
-</math>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML">
-<mrow>
-	<mfrac>
-	<mrow>
-		<mn>dN</mn>
-	</mrow>
-	<mrow>
-		<mn>N</mn>
-	</mrow>
-	</mfrac>
-</mrow>
-<mrow><mo>&#x0003D;</mo></mrow>
-<mrow><mo>&#x02212;</mo>
-	<mi>k</mi>
-	<mo>&#x0002A;</mo>
-	<mi>dt</mi>
-</mrow>
-</br>
-</math>
-</center>
-Integrating on both sides
-<center>
-<math display="inline" xmlns="http://www.w3.org/1998/Math MathML">
-<mrow>
-	<mo>&#x0222B;</mo>
-</mrow>
-<mrow>
-	<mfrac>
-	<mrow>
-		<mn>dN</mn>
-	</mrow>
-	<mrow>
-		<mn>dt</mn>
-	</mrow>
-	</mfrac>
-</mrow>
-</mrow>
-	<mo>&#x0003D;</mo>
-</mrow>
-<mrow><mo>&#x02212;</mo>
-	<mi>k</mi>
-	<mo>&#x0002A;</mo>
-	<mi>dt</mi>
-</mrow>
-</math>
-<br>
+<!-- Created by HTMX version 4.0 -->
+<html> 
+<title>Newton's Law of Cooling</title> 
+
+<BODY BGCOLOR="#ffffff"  LINK="#0000ff" 
+VLINK="# 990000" ALINK="#ff0000" TEXT="#000000"  > 
 
 
-</center>
+<table cellpadding = 10> 
+<tr> 
+<td width = 50> </td> 
+<td> 
+<h1>Other differential equations</h1> 
+
+
+We have examined the behaviour of two simple differential equations 
+so far, one for population growth, and one for the radioactive decay 
+of a substance. The methods we have developed are actually useful for many 
+other interesting problems, and can help us to make predictions about 
+other systems that, at first sight, do not seem at all related. We will find 
+that the common thread in all these systems is the simple differential 
+equation of the form 
+<p> 
+<center> 
+ 
+
+</center> 
+<p> 
+This equation is of interest 
+ for either positive or negative values of the constant 
+ 
+<img align=absmiddle src="mathgifs/cool_2.gif" alt="$ r $ ">
+. In fact, in the examples studied so far, we looked 
+at one case in which  
+<img align=absmiddle src="mathgifs/cool_3.gif" alt="$ r=k $ ">
+, and another case in which 
+ 
+<img align=absmiddle src="mathgifs/cool_4.gif" alt="$ r=-k $ ">
+ . 
+<p> 
+Before continuing, let us recall that the behaviour of the solution(s) 
+to this equation depend on whether the constant  
+
+is positive or negative: 
+<p> 
+<center> 
+
+</center> 
+<br><br><p> 
+With this in mind, let us examine another realization of a differential 
+equation, this time connected with the property of cooling (or loss of heat) 
+of a warm object in a colder environment. The following "Law" is an 
+approximate description of experimentally observed behaviour. 
+
+<h2>Newton's Law of Cooling</h2> 
+
+<table cellpadding = 10> 
+<td> Newton's Law of Cooling states that 
+the rate of change of the temperature of 
+an object is proportional to the difference between its own temperature 
+and the ambient temperature (i.e. the temperature of its surroundings). 
+</td> 
+</table> 
+<p> 
+
+Newton's Law makes a statement about an <strong>instantaneous</strong> 
+rate of change of the temperature. We will see that when we translate this 
+verbal statement into a differential equation, we arrive at a 
+differential equation. The <strong>solution</strong> to this equation 
+will then be a function that tracks the complete record of the temperature 
+over time. Newton's Law would enable us to solve the following problem. 
+
+<p><br> 
+<font color = "#008800"> <b> 
+Example 1: The Big Pot of Soup 
+</b> </font> 
+As part of his summer job at a resturant, Jim learned to cook up a big 
+pot of soup late at night, just before closing time, 
+so that there would be plenty of soup to feed 
+customers the next day. He also found out that, while refrigeration 
+was essential to preserve the soup overnight, the soup was too hot 
+to be put directly into the fridge when it was ready. 
+(The soup had just boiled at 100 degrees C, and the fridge was 
+not powerful enough to accomodate a big pot of soup if it 
+was any warmer than 20 degrees C). 
+Jim discovered that 
+by cooling the pot in a sink full of cold water, 
+(kept running, so that its temperature was roughly constant 
+at 5 degrees C) and stirring occasionally, 
+he could bring tht temperature of the soup 
+to 60 degrees C in ten minutes. How long before 
+closing time should the soup be ready so that Jim could put it in the fridge 
+and leave on time ? 
+<br><br><br> 
+
+
+<p> 
+<strong> Solution:</strong> Let us summarize the information 
+briefly and define notation for this problem. 
+<br> Let 
+<table cellpadding=10> 
+<tr> 
+<td> 
+ 
+<img align=absmiddle src="mathgifs/cool_8.gif" alt="$ T(t) $ ">
+ = Temperature of the soup at time t (in min).</td></tr> 
+<tr> 
+<td> 
+ 
+<img align=absmiddle src="mathgifs/cool_9.gif" alt="$ T(0)=T_o $ ">
+ = Initial Temperature of the soup =100 deg.</td></tr> 
+<tr> 
+<td> 
+ 
+<img align=absmiddle src="mathgifs/cool_10.gif" alt="$ T_a $ ">
+ = Ambient temperature (temp of water in sink) = 5 deg .</td> 
+</tr> 
+</table> 
+<br> 
+<br><strong>Given:</strong> 
+The rate of change of the temperature 
+ 
+<img align=absmiddle src="mathgifs/cool_11.gif" alt="$ dT/dt $ ">
+, is (by Newton's Law of Cooling) proportional to the 
+difference between the temperature of the soup  
+<img align=absmiddle src="mathgifs/cool_12.gif" alt="$ T(t) $ ">
+ and the 
+ambient temperature  
+<img align=absmiddle src="mathgifs/cool_13.gif" alt="$ T_a $ ">
+
+This means that: 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_14.gif" alt="
+\[ 
+\frac{dT}{dt} {\rm~ is~ proportional~ to~} (T - T_a). 
+\] 
+ ">
+
+</center> 
+<p> 
+Here a bit of care is needed:  Clearly if the soup is hotter than the 
+water in the sink  
+<img align=absmiddle src="mathgifs/cool_15.gif" alt="$ T(t)-T_a > 0  $ ">
+, then the soup is <strong>cooling 
+down</strong> which means that the derivative  
+<img align=absmiddle src="mathgifs/cool_16.gif" alt="$ dT/dt $ ">
+ should be 
+<strong>negative</strong>. (Remember the connection between a decreasing 
+function and the sign of the derivative ?). This means that the 
+equation we need has to have the following sign pattern: 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_17.gif" alt="
+\[ 
+\frac{dT}{dt} = -k (T - T_a). 
+\] 
+ ">
+
+</center> 
+<p> 
+where  
+<img align=absmiddle src="mathgifs/cool_18.gif" alt="$ k $ ">
+ is a positive constant. 
+<br> 
+This equation is another example of a <strong>differential equation</strong>. 
+The independent variable is   
+<img align=absmiddle src="mathgifs/cool_19.gif" alt="$ t $ ">
+ for time, the function we want to 
+find 
+is   
+<img align=absmiddle src="mathgifs/cool_20.gif" alt="$ T(t) $ ">
+, and the quantities   
+<img align=absmiddle src="mathgifs/cool_21.gif" alt="$ T_a, k $ ">
+ 
+are constants. 
+In fact, from Jim's measurements, we know that   
+<img align=absmiddle src="mathgifs/cool_22.gif" alt="$ T_a=5 $ ">
+, but we 
+still don't know what value to put in for the constant   
+<img align=absmiddle src="mathgifs/cool_23.gif" alt="$ k $ ">
+. We will 
+discuss this further below. 
+
+
+
+<p> 
+<h3> <img src="../../images/qbutton.gif"> 
+For your consideration: </h3> 
+<p> 
+<ul> 
+<li>(1) Check that the differential equation above makes sense. Can it also 
+describe the case of a cold object heating up in a warmer environment? 
+<P> 
+<li>(2) What do you think the constant   
+<img align=absmiddle src="mathgifs/cool_24.gif" alt="$ k $ ">
+ represents ? 
+<p> 
+<li>(3) What units would this constant have ? 
+<p> 
+<li>(4) If you were to compare the rate of cooling of the soup inside 
+a sealed styrofoam container, and inside a metal pot, which one might 
+correspond to a larger value of k? 
+</ul> 
+
+<p><br> 
+<font color = "#008800"> <b> 
+Back to the same old equation 
+</b> </font> 
+<br><br> 
+The equation we arrived at above looks different from the ones we have 
+just investigated, but as we shall soon see, the difference is rather 
+superficial. Indeed, by defining a new variable, we will show that the 
+equation is really completely related to the exponential decay seen 
+previously. To see this, define 
+<br> 
+<table> 
+<tr> 
+<td> 
+ 
+
+</center> 
+<p> 
+(We have used the fact that   
+<img align=absmiddle src="mathgifs/cool_29.gif" alt="$ T_a  $ ">
+ is constant to eliminate its derivative, and we plugged 
+in   
+<img align=absmiddle src="mathgifs/cool_30.gif" alt="$ y $ ">
+ for   
+<img align=absmiddle src="mathgifs/cool_31.gif" alt="$ (T-T_a) $ ">
+ in the last step.) What a 
+nice surprize !   By defining this new variable, we have arrived once more 
+at the familiar equation 
+<p> 
+<center> 
+ 
+
+</center> 
+<p> 
+whose solution is well known to us, namely: 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_33.gif" alt="
+\[ 
+y(t) = y_o e^{-kt} 
+\] 
+ ">
+
+</center> 
+<p> 
+We can use this result to conclude (by plugging in  
+<img align=absmiddle src="mathgifs/cool_34.gif" alt="$ y=(T-T_a) $ ">
+
+and  
+<img align=absmiddle src="mathgifs/cool_35.gif" alt="$ (T_o-T_a) $ ">
+) that 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_36.gif" alt="
+\[ 
+T(t)- T_a = (T_o-T_a) e^{-kt} 
+\] 
+ ">
+
+</center> 
+<p> 
+It follows that 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_37.gif" alt="
+\[ 
+T(t)= T_a + (T_o-T_a) e^{-kt} 
+\] 
+ ">
+
+</center> 
+<p> 
+We found the solution in general form, but it looks quite complicated. 
+Let's try to understand this expression and its predictions in the 
+case of the problem described above. 
+<p><br> 
+<br> 
+<font color = "#008800"> <b> 
+How the soup will cool 
+</b> </font> 
+<br><br> 
+From the information in the problem, we know that 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_38.gif" alt="$ T(0)=T_o = 100, T_a = 5, T_o-T_a = 95  $ ">
+ 
+</center> 
+<p> 
+so that, 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_39.gif" alt="
+\[ 
+T(t)= 5 + 95 e^{-kt} 
+\] 
+ ">
+
+</center> 
+<p> 
+We also know that after 10 minutes, the soup cools to 60 degrees, so that 
+ 
+<img align=absmiddle src="mathgifs/cool_40.gif" alt="$ t=10, T(10)= 60  $ ">
+. Plugging into the last equation, we find that 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_41.gif" alt="
+\[ 
+60= T(10)= 5 + 95 e^{-10 k } 
+\] 
+ ">
+
+</center> 
+<p> 
+Rearranging, 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_42.gif" alt="
+\[ 
+60= 5 + 95 e^{-10 k }, ~~~~~~~~55=95 e^{-10 k },~~~~~~~~\frac{55}{95} = e^{-10 k }, 
+~~~~~~~~~\frac{95}{55}= e^{10 k } 
+\] 
+ ">
+
+</center> 
+<p> 
+(The steps are much the same as in our previous work in the example on 
+radioactive decay. In the last step we took a reciprocal of both sides of the equation. This just makes all the quantities come out to be positive in the next 
+step, so it is done for convenience, though it is not an essential step). We have found that 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_43.gif" alt="
+\[ 
+e^{10 k }= 1.73 
+\] 
+ ">
+
+</center> 
+<p> 
+
+
+Taking the natural logarithm of both sides, and 
+solving for  
+<img align=absmiddle src="mathgifs/cool_44.gif" alt="$ k $ ">
+, we find that 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_45.gif" alt="
+\[ 
+\ln(1.73)= \ln(e^{10 k }),~~~~~~~~~~ \ln(1.73)= 10 k 
+\] 
+ ">
+
+</center> 
+<p> 
+Thus, 
+<p> 
+<center> 
+ 
+
+
+</center> 
+<p> 
+So we see that the constant which governs the rate of cooling is 
+  
+<img align=absmiddle src="mathgifs/cool_47.gif" alt="$ k=0.054 $ ">
+ per minute.  Now we can specify the solution fully, 
+ since all constants have been determined from the information in the 
+ problem. The prediction is that the temperature of the pot of soup at time 
+ t will be 
+
+The behaviour of this solution is shown in the diagram. 
+<br><br><p> 
+<h3> <img src="../../images/qbutton.gif"> 
+For your consideration: </h3> 
+<p> 
+<ul> 
+<li> (1) Look at the behaviour of the solution corresponding to 
+the function  
+<img align=absmiddle src="mathgifs/cool_49.gif" alt="$ T(t) $ ">
+. What will happen after a very long time? 
+What will the eventual temperature of the soup be? 
+<p> 
+<li> (2) How can this be understood from the expression for 
+ 
+<img align=absmiddle src="mathgifs/cool_50.gif" alt="$ T(t) $ ">
+ ? In particular, what will happen to the term 
+  
+<img align=absmiddle src="mathgifs/cool_51.gif" alt="$  e^{-0.054t} $ ">
+ ? Will this term be increasing or decreasing 
+ with time? 
+<P> 
+<li> (3) What will the temperature of the soup be after 1 hour ? 
+<p> 
+<li> (4) Is there something analogous to a half life in this problem? 
+<p> 
+<li> (5) What would happen if Jim did not stirr the soup occasionally? 
+Would it still cool the same way ? Would Newton's Law of Cooling apply just 
+as before? Why are we assuming that the pot is well-stirred? 
+<p> 
+<li> (6) What would happen if the water in the sink was not running ? 
+How would this change our assumption that the ambient temperature was 
+a constant ? 
+
+</ul> 
+<br><br><br> 
+
+<p><br> 
+<font color = "#008800"> <b> 
+Solving Jim's Soup problem 
+</b> </font> 
+<br><br> 
+To finish our work, let us determine how long it takes for the 
+soup to be cool enough to put into the refrigerator. We need to wait 
+until  
+<img align=absmiddle src="mathgifs/cool_52.gif" alt="$ T(t)=20 $ ">
+, so at that time: 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_53.gif" alt="
+\[ 
+20= 5 + 95 e^{-0.054t} 
+\] 
+ ">
+
+</center> 
+<p> 
+This equation can be solved for  
+<img align=absmiddle src="mathgifs/cool_54.gif" alt="$ t $ ">
+ in much the same way as 
+before. Subtracting 5 from both sides and dividing by 95 we get: 
+<p> 
+<center> 
+ 
+<img align=absmiddle src="mathgifs/cool_55.gif" alt="
+\[ 
+\frac{15}{95} = e^{-0.054t}~~~~~\frac{95}{15}= 6.333 = e^{0.054 t} 
+\] 
+ ">
+
+</center> 
+<p> 
+Taking logarithms of both sides, we find that 
+<p> 
+<center> 
+ 
+
+</center> 
+<p> 
+Thus, using the fact that  
+<img align=absmiddle src="mathgifs/cool_57.gif" alt="$  \ln(6.33)= 1.84 $ ">
+ we have 
+<p> 
+<center> 
+ 
+
+</center> 
+<p> 
+Thus, it will take a little over half an hour for Jim's soup to cool 
+off enough to be put into the refrigerator. 
+<br><br><br> 
+
+
+
+<strong>Summary:</strong> 
+<br><br> 
+We have just seen yet another example of a simple differential equation and how 
+it can be used to make predictions. To summarize what we found, here is the connection 
+between the differential equation of Newton's Law of Cooling and its solution: 
+<center> 
+
+
+</body> 
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

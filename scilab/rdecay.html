@@ -4,12 +4,16 @@
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
-<title>Solving First Order ODE</title>
+<title>SolvingODE:RadioactiveDecay</title>
 <style>
 p.solid{border-style: double;}
 </style>
 </head>
 <body>
+<table cellpadding = 10> 
+<tr> 
+<td width = 50> </td>
+<td> 
 <h1>Solving First Order ODE</h1>
 </br>
 <h3> Radioactivity Decay</h3>
@@ -46,7 +50,7 @@ Though the knowledge of the numerical methods being used is not required for fur
 				function dN = f(T,N)
 				    dN = -k*N
 				endfunction
-				n = ode(1000,0,T,f); 
+				n = ode(N0,T0,T,f); 
 				plot(T,n)
 				xlabel("time(sec)")
 				ylabel("Number of Atoms")
@@ -80,7 +84,7 @@ We are basically expressing the differntial equation in the syntax of scilab fun
 </br>
 <pre>
 <span class="inner-pre" style="font-size: 15px">
-				n = ode(1000,0,T,f); 
+				n = ode(N0,T0,T,f); 
 
 				plot(T,n)
 				xlabel("time(sec)")
@@ -88,10 +92,16 @@ We are basically expressing the differntial equation in the syntax of scilab fun
 				title("Solution of Radioactive Decay of Uranium atoms")
 </span>
 </pre>
-<p> The first line of the program calls the ode function which solves the given function for the differential equation. The rest of the program plots the values and draws the required legends,etc
+<p> The first line of the program calls the ode function which solves the given function for the differential equation. The rest of the program plots the values and draws the required legends,etc.</p>
+The Output of the graph:</br>
+<center>
+<img src="./radioactivedecay.png" alt="output">
+
 <br>
 <br>
 </br>
 <em>created by @redboxup 2020<em>
+</center>
+</table>
 </body>
 </html>
